@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
 
 @Entity
 @Table(name = "Users")
@@ -11,6 +12,7 @@ public class User{
 
 	@Id
 	@Column(name = "Id")
+	@GeneratedValue
 	private long Id;
 	@Column(name = "Email")
 	private String Email;
