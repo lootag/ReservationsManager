@@ -10,7 +10,7 @@ import Persistence.UserRepository.UserRepository;
 import Persistence.Entities.User;
 
 import java.util.Random;
-import java.util.logging.Logger;
+
 
 public class UserRepositoryTest {
     @Test public void ShouldEntityBeSavedCorrectly() {
