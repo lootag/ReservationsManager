@@ -28,6 +28,9 @@ public class UserRepository implements IUserRepository{
             session.getTransaction().rollback();
             throw ex;
         }
+        finally {
+            factory.close();
+        }
 
     }
 

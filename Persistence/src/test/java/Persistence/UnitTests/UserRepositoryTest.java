@@ -9,7 +9,6 @@ import static org.junit.Assert.*;
 import Persistence.UserRepository.UserRepository;
 import Persistence.Entities.User;
 
-import java.security.SecureRandom;
 import java.util.Random;
 
 public class UserRepositoryTest {
@@ -31,9 +30,10 @@ public class UserRepositoryTest {
         session.beginTransaction();
         Persistence.HibernateEntities.User retrievedUser = (Persistence.HibernateEntities.User) session.get(Persistence.HibernateEntities.User.class, result.getId());
         session.getTransaction().commit();
-
+        factory.close();
         //Assert
         assertTrue(result.getId() != -1);
+        assertNotNull(retrievedUser);
     }
 
     private SessionFactory CreateSessionFactory(){
@@ -43,6 +43,6 @@ public class UserRepositoryTest {
                 .applySettings(configuration.getProperties())
                 .build();
         SessionFactory factory = configuration.buildSessionFactory(serviceRegistry);
-        return  factory;
+        return factory;
     }
 }
