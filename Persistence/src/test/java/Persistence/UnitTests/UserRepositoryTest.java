@@ -30,7 +30,7 @@ public class UserRepositoryTest {
         Session session = factory.getCurrentSession();
         session.beginTransaction();
         Persistence.HibernateEntities.User retrievedUser = (Persistence.HibernateEntities.User) session.get(Persistence.HibernateEntities.User.class, result.getId());
-
+        session.getTransaction().commit();
 
         //Assert
         assertTrue(retrievedUser.getEmail() == toSave.getEmail());
