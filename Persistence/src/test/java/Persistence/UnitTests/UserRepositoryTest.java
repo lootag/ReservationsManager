@@ -28,7 +28,8 @@ public class UserRepositoryTest {
         SessionFactory factory = this.CreateSessionFactory();
         Session session = factory.getCurrentSession();
         session.beginTransaction();
-        Persistence.HibernateEntities.User retrievedUser = (Persistence.HibernateEntities.User) session.get(Persistence.HibernateEntities.User.class, 5);
+        long id = 5;
+        Persistence.HibernateEntities.User retrievedUser = (Persistence.HibernateEntities.User) session.get(Persistence.HibernateEntities.User.class, id);
         session.getTransaction().commit();
         factory.close();
         //Assert
