@@ -21,12 +21,10 @@ public class UserRepositoryTest {
         random.nextBytes(Hash);
         random.nextBytes(Salt);
         User toSave = new User( -1,"email", Hash, Salt);
-        User toSave2 = new User(-1, "email", Hash, Salt);
 
         //Act
         UserRepository sut = new UserRepository();
         User result = sut.SaveUser(toSave);
-        User result2 = sut.SaveUser(toSave2);
 
         SessionFactory factory = this.CreateSessionFactory();
         Session session = factory.getCurrentSession();
@@ -36,9 +34,11 @@ public class UserRepositoryTest {
         session.getTransaction().commit();
         factory.close();
         //Assert
-        System.out.println("The Id of the first record is " + id);
-        System.out.println("The Id of the second record is " + result2.getId());
-        assertTrue(result.getId() != -1);
+        assertNotNull(retrievedUser);
+        assertTrue(retrievedUser.getId() > 0);
+        assertTrue(toSave.getEmail() == retrievedUser.getEmail());
+        assertTrue(toSave.getHash() == retrievedUser.getHash());
+        assertTrue(toSave.getSalt() == retrievedUser.getSalt());
     }
 
     private SessionFactory CreateSessionFactory(){
