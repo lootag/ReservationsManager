@@ -21,6 +21,7 @@ public class UserRepository implements IUserRepository{
             session.save(hUser);
             session.getTransaction().commit();
             User toReturn = new User(hUser.getId(), hUser.getEmail(), hUser.getHash(), hUser.getSalt());
+            System.out.println("The Id of the user you've just created is " + toReturn.getId());
             return toReturn;
         }
         catch (Exception ex){
