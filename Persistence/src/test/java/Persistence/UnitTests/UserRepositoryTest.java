@@ -33,9 +33,7 @@ public class UserRepositoryTest {
         session.getTransaction().commit();
 
         //Assert
-        assertTrue(retrievedUser.getEmail() == toSave.getEmail());
-        assertTrue(retrievedUser.getHash() == toSave.getHash());
-        assertTrue(retrievedUser.getSalt() == toSave.getSalt());
+        assertTrue(result.getId() != -1);
     }
 
     private SessionFactory CreateSessionFactory(){
