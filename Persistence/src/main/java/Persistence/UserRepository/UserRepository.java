@@ -20,7 +20,6 @@ public class UserRepository implements IUserRepository{
         try{
             session.save(hUser);
             session.getTransaction().commit();
-            session.close();
             User toReturn = new User(hUser.getId(), hUser.getEmail(), hUser.getHash(), hUser.getSalt());
             return toReturn;
         }
