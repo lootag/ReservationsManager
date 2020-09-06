@@ -10,6 +10,7 @@ import Persistence.UserRepository.UserRepository;
 import Persistence.Entities.User;
 
 import java.util.Random;
+import java.util.logging.Logger;
 
 public class UserRepositoryTest {
     @Test public void ShouldEntityBeSavedCorrectly() {
@@ -33,8 +34,8 @@ public class UserRepositoryTest {
         session.getTransaction().commit();
         factory.close();
         //Assert
+        System.out.println("The Id is " + id);
         assertTrue(result.getId() != -1);
-        assertNotNull(retrievedUser);
     }
 
     private SessionFactory CreateSessionFactory(){
