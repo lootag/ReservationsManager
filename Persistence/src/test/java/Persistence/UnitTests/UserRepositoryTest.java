@@ -8,7 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import Persistence.UserRepository.UserRepository;
 import Persistence.Entities.User;
-
+import java.util.Arrays;
 import java.util.Random;
 
 
@@ -36,13 +36,10 @@ public class UserRepositoryTest {
         //Assert
         assertNotNull(retrievedUser);
         assertTrue(retrievedUser.getId() > 0);
-        System.out.println(toSave.getEmail());
-        System.out.println(retrievedUser.getEmail());
-        /*
-        assertTrue(toSave.getEmail() == retrievedUser.getEmail());
-        assertTrue(toSave.getHash() == retrievedUser.getHash());
-        assertTrue(toSave.getSalt() == retrievedUser.getSalt());
-        */
+        assertTrue(toSave.getEmail().equals(retrievedUser.getEmail()));
+        assertTrue(Arrays.equals(toSave.getHash(),retrievedUser.getHash()));
+        assertTrue(Arrays.equals(toSave.getSalt(),retrievedUser.getSalt()));
+
     }
 
     private SessionFactory CreateSessionFactory(){
